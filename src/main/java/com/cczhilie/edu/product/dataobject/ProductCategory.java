@@ -1,5 +1,7 @@
 package com.cczhilie.edu.product.dataobject;
 
+import lombok.Data;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,6 +13,7 @@ import java.util.Date;
  * @description: 商品类目实体类
  **/
 @Entity
+@Data
 public class ProductCategory {
     @Id
     @GeneratedValue
