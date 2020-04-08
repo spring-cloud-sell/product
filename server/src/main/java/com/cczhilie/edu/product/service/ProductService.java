@@ -1,7 +1,8 @@
 package com.cczhilie.edu.product.service;
 
+import com.cczhilie.edu.product.common.DecreaseStockInput;
+import com.cczhilie.edu.product.common.ProductInfoOutput;
 import com.cczhilie.edu.product.dataobject.ProductInfo;
-import com.cczhilie.edu.product.dto.CartDTO;
 
 import java.util.List;
 
@@ -22,11 +23,11 @@ public interface ProductService {
      * @param productIdList
      * @return
      */
-    List<ProductInfo> findByProductIdIn(List<String> productIdList);
+    List<ProductInfoOutput> findByProductIdIn(List<String> productIdList);
 
     /**
      * 扣库存
      * @param decreaseStockInputList
      */
-    void decreaseStock(List<CartDTO> decreaseStockInputList);
+    void decreaseStock(List<DecreaseStockInput> decreaseStockInputList);
 }

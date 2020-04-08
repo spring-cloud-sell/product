@@ -1,8 +1,9 @@
 package com.cczhilie.edu.product.controller;
 
+import com.cczhilie.edu.product.common.DecreaseStockInput;
+import com.cczhilie.edu.product.common.ProductInfoOutput;
 import com.cczhilie.edu.product.dataobject.ProductCategory;
 import com.cczhilie.edu.product.dataobject.ProductInfo;
-import com.cczhilie.edu.product.dto.CartDTO;
 import com.cczhilie.edu.product.service.CategoryService;
 import com.cczhilie.edu.product.service.ProductService;
 import com.cczhilie.edu.product.util.ResultVoUtil;
@@ -82,7 +83,7 @@ public class ProductController {
      * @return
      */
     @PostMapping("/listForOrder")
-    public List<ProductInfo> listForOrder(@RequestBody List<String> productIdList) {
+    public List<ProductInfoOutput> listForOrder(@RequestBody List<String> productIdList) {
         log.info("获取商品列表(给订单服务用的)");
         return productService.findByProductIdIn(productIdList);
     }
@@ -90,13 +91,12 @@ public class ProductController {
     /**
      * 扣除商品库存(给订单服务用的)
      *
-     * @param cartDTOList
-     * @return
+     * @param decreaseStockInputList
      */
     @PostMapping("/decreaseStock")
-    public void decreaseStock(@RequestBody List<CartDTO> cartDTOList) {
+    public void decreaseStock(@RequestBody List<DecreaseStockInput> decreaseStockInputList) {
         log.info("扣除商品库存(给订单服务用的)");
-        productService.decreaseStock(cartDTOList);
+        productService.decreaseStock(decreaseStockInputList);
     }
 
 }

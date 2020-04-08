@@ -16,9 +16,18 @@ import java.util.List;
 @FeignClient(name = "product")
 public interface ProductClient {
 
+    /**
+     * 获取商品信息
+     * @param productIdList
+     * @return
+     */
     @PostMapping("/product/listForOrder")
     List<ProductInfoOutput> listForOrder(@RequestBody List<String> productIdList);
 
+    /**
+     * 通过商品服务获取商品列表
+     * @param decreaseStockInputList
+     */
     @PostMapping("/product/decreaseStock")
     void decreaseStock(@RequestBody List<DecreaseStockInput> decreaseStockInputList);
 }
